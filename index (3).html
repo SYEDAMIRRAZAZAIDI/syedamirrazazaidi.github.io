@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amir Zaidi | Marketing & Business Strategy</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --dark: #0f0f0f; --dark2: #1a1a1a; --dark3: #242424;
+  --border: #2e2e2e; --gold: #c9a84c; --gold2: #e8c97a;
+  --white: #f0ede8; --gray: #888; --muted: #aaa; --light: #555;
+}
+body { background: var(--dark); color: var(--white); font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 1.6; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+  background: rgba(15,15,15,0.96); border-bottom: 1px solid var(--border);
+  padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 60px;
+}
+.nav-brand { font-size: 20px; font-weight: bold; color: var(--gold); letter-spacing: 2px; }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a { color: var(--gray); text-decoration: none; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover { color: var(--gold); }
+
+.hero { min-height: 100vh; padding-top: 60px; display: flex; align-items: center; }
+.hero-inner { max-width: 1100px; margin: 0 auto; padding: 60px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.hero-photo { width: 280px; height: 280px; border-radius: 50%; object-fit: cover; border: 3px solid var(--gold); display: block; margin: 0 auto; }
+.hero-photo-fallback { width: 280px; height: 280px; border-radius: 50%; background: var(--dark3); border: 3px solid var(--gold); display: flex; align-items: center; justify-content: center; font-size: 72px; font-weight: bold; color: var(--gold); margin: 0 auto; }
+.badge { display: inline-block; background: var(--gold); color: #000; font-size: 11px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 20px; }
+h1.name { font-size: 56px; font-weight: bold; line-height: 1.0; margin-bottom: 12px; }
+h1.name span { color: var(--gold); }
+.role { font-size: 18px; color: var(--gray); margin-bottom: 24px; }
+.desc { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 32px; max-width: 460px; }
+.btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 36px; }
+.btn-g { background: var(--gold); color: #000; font-weight: bold; padding: 12px 28px; border: none; cursor: pointer; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; display: inline-block; transition: background 0.2s; }
+.btn-g:hover { background: var(--gold2); }
+.btn-o { border: 1px solid var(--gold); color: var(--gold); background: transparent; padding: 12px 28px; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; display: inline-block; transition: all 0.2s; }
+.btn-o:hover { background: var(--gold); color: #000; }
+.stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.stat { background: var(--dark2); padding: 16px 10px; text-align: center; }
+.stat-n { font-size: 28px; font-weight: bold; color: var(--gold); }
+.stat-l { font-size: 10px; color: var(--gray); text-transform: uppercase; margin-top: 2px; }
+
+.wrap { max-width: 1100px; margin: 0 auto; padding: 80px 40px; }
+hr.div { border: none; border-top: 1px solid var(--border); }
+.sec-label { font-size: 11px; font-weight: bold; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.sec-title { font-size: 36px; font-weight: bold; color: var(--white); margin-bottom: 40px; }
+
+.about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; }
+.about-grid p { color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+.about-grid p strong { color: var(--white); }
+.skills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.sk { font-size: 12px; padding: 6px 14px; border: 1px solid var(--border); color: var(--gray); }
+.card { background: var(--dark2); border: 1px solid var(--border); padding: 28px; }
+.card h3 { font-size: 13px; color: var(--gold); margin-bottom: 18px; text-transform: uppercase; letter-spacing: 1px; }
+.crow { display: flex; gap: 10px; margin-bottom: 12px; align-items: flex-start; }
+.ci { color: var(--gold); font-size: 15px; flex-shrink: 0; }
+.crow a, .crow span { color: var(--muted); font-size: 13px; text-decoration: none; }
+.crow a:hover { color: var(--gold); }
+.avail { margin-top: 18px; padding: 12px; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25); text-align: center; }
+.avail p { font-size: 12px; color: var(--gold); font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+.avail span { font-size: 12px; color: var(--gray); }
+
+.exp-item { display: grid; grid-template-columns: 180px 1fr; gap: 32px; padding: 32px 0; border-bottom: 1px solid var(--border); }
+.exp-item:first-child { border-top: 1px solid var(--border); }
+.ep { font-size: 12px; color: var(--gold); letter-spacing: 0.5px; margin-bottom: 4px; }
+.el { font-size: 12px; color: var(--gray); }
+.ec { font-size: 20px; font-weight: bold; color: var(--white); margin-bottom: 4px; }
+.er { font-size: 11px; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+.ed { font-size: 14px; color: var(--muted); line-height: 1.7; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.tg { font-size: 11px; padding: 3px 10px; border: 1px solid var(--border); color: var(--light); }
+
+.edu-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+.edu-card { background: var(--dark2); border: 1px solid var(--border); border-top: 3px solid var(--gold); padding: 24px 18px; }
+.eflag { font-size: 30px; margin-bottom: 12px; display: block; }
+.eperiod { font-size: 11px; color: var(--gold); letter-spacing: 1px; margin-bottom: 6px; }
+.euni { font-size: 15px; font-weight: bold; color: var(--white); margin-bottom: 4px; line-height: 1.3; }
+.ecity { font-size: 12px; color: var(--gray); }
+
+.proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.proj-card { background: var(--dark2); border: 1px solid var(--border); padding: 32px; transition: border-color 0.2s; }
+.proj-card:hover { border-color: var(--gold); }
+.pn { font-size: 11px; color: var(--gold); letter-spacing: 2px; margin-bottom: 12px; }
+.pt { font-size: 20px; font-weight: bold; color: var(--white); margin-bottom: 6px; }
+.pc { font-size: 12px; color: var(--gold); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
+.pd { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+.sem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.sem-card { background: var(--dark2); border: 1px solid var(--border); padding: 32px; transition: border-color 0.2s; }
+.sem-card:hover { border-color: var(--gold); }
+.sflag { font-size: 36px; margin-bottom: 14px; }
+.sp { font-size: 11px; color: var(--gold); letter-spacing: 2px; margin-bottom: 6px; text-transform: uppercase; }
+.st { font-size: 20px; font-weight: bold; color: var(--white); margin-bottom: 4px; }
+.ss { font-size: 13px; color: var(--gray); margin-bottom: 12px; }
+.sd { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+.lang-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+.lang-item { margin-bottom: 20px; }
+.lrow { display: flex; justify-content: space-between; margin-bottom: 6px; }
+.ln { font-size: 14px; color: var(--white); font-weight: bold; }
+.ll { font-size: 13px; color: var(--gray); }
+.lbar { height: 3px; background: var(--border); }
+.lfill { height: 100%; background: var(--gold); }
+.cpills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.cpill { padding: 7px 14px; border: 1px solid var(--border); color: var(--gray); font-size: 13px; }
+.cpill.on { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.08); }
+
+.contact-bg { background: var(--dark2); border-top: 1px solid var(--border); }
+.contact-inner { max-width: 1100px; margin: 0 auto; padding: 80px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+.ch { font-size: 42px; font-weight: bold; line-height: 1.1; margin-bottom: 18px; }
+.ch span { color: var(--gold); }
+.cs { font-size: 15px; color: var(--muted); line-height: 1.7; }
+.form { display: flex; flex-direction: column; gap: 14px; }
+.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form input, .form textarea { background: var(--dark3); border: 1px solid var(--border); color: var(--white); padding: 12px 16px; font-size: 14px; font-family: Arial, sans-serif; outline: none; width: 100%; transition: border-color 0.2s; }
+.form input:focus, .form textarea:focus { border-color: var(--gold); }
+.form input::placeholder, .form textarea::placeholder { color: var(--light); }
+.form textarea { resize: none; }
+
+footer { background: var(--dark); border-top: 1px solid var(--border); padding: 22px 40px; display: flex; justify-content: space-between; align-items: center; }
+footer p { font-size: 12px; color: var(--gray); }
+footer a { color: var(--gray); text-decoration: none; font-size: 12px; margin-left: 20px; }
+footer a:hover { color: var(--gold); }
+
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hero-inner { grid-template-columns: 1fr; padding: 40px 20px; text-align: center; }
+  h1.name { font-size: 38px; }
+  .stats { grid-template-columns: repeat(2,1fr); }
+  .btns { justify-content: center; }
+  .desc { max-width: 100%; }
+  .wrap { padding: 50px 20px; }
+  .about-grid, .lang-grid, .contact-inner { grid-template-columns: 1fr; gap: 30px; }
+  .edu-grid { grid-template-columns: 1fr 1fr; }
+  .proj-grid, .sem-grid { grid-template-columns: 1fr; }
+  .exp-item { grid-template-columns: 1fr; gap: 6px; }
+  .frow { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 12px; text-align: center; padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-brand">AZ</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#seminars">Seminars</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="badge">Available June 2026</span>
+      <h1 class="name">Amir<br><span>Zaidi</span></h1>
+      <p class="role">Marketing &amp; Business Strategy</p>
+      <p class="desc">EMBS candidate with multicultural academic experience across four European countries. Specialising in international marketing, brand strategy, and market research.</p>
+      <div class="btns">
+        <a href="#contact" class="btn-g">Get in Touch</a>
+        <a href="#experience" class="btn-o">View Experience</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="stat-n">4</div><div class="stat-l">Countries</div></div>
+        <div class="stat"><div class="stat-n">20+</div><div class="stat-l">Yrs Exp</div></div>
+        <div class="stat"><div class="stat-n">4</div><div class="stat-l">Languages</div></div>
+        <div class="stat"><div class="stat-n">2</div><div class="stat-l">Projects</div></div>
+      </div>
+    </div>
+    <div>
+      <img src="photo.jpg" alt="Amir Zaidi" class="hero-photo" onerror="this.style.display='none';document.getElementById('phfb').style.display='flex'">
+      <div class="hero-photo-fallback" id="phfb" style="display:none">AZ</div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div id="about" class="wrap">
+  <p class="sec-label">01 — About</p>
+  <h2 class="sec-title">Who I Am</h2>
+  <div class="about-grid">
+    <div>
+      <p>I am an <strong>EMBS (European Master of Business Studies)</strong> candidate completing a programme across four countries — Trento, Annecy, Kassel, and León. Each city shaped how I see markets, consumers, and strategy.</p>
+      <p>Before the EMBS, I founded <strong>Zaidi Estate</strong>, building a real estate brand from the ground up in Lahore — running digital campaigns, content strategy, and sales operations for four years. Earlier, I managed regional sales and brand development at Firdous Cloth Mills and spent a decade in financial operations at RBS.</p>
+      <p>Seeking a <strong>three-month internship from June 2026</strong> in marketing, business development, or market analysis across Europe.</p>
+      <div class="skills">
+        <span class="sk">Marketing Strategy</span><span class="sk">Market Research</span><span class="sk">Brand Development</span>
+        <span class="sk">Digital Marketing</span><span class="sk">Consumer Insights</span><span class="sk">Competitive Analysis</span>
+        <span class="sk">Business Development</span><span class="sk">Go-to-Market Strategy</span>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <h3>Contact Info</h3>
+        <div class="crow"><span class="ci">&#128205;</span><span>León, Spain</span></div>
+        <div class="crow"><span class="ci">&#128222;</span><a href="tel:+34611740014">+34 611 740 014</a></div>
+        <div class="crow"><span class="ci">&#9993;</span><a href="mailto:syedamirrazazaidi@gmail.com">syedamirrazazaidi@gmail.com</a></div>
+        <div class="crow"><span class="ci">&#128101;</span><a href="https://linkedin.com/in/amirzaidi-4b314452" target="_blank">LinkedIn Profile</a></div>
+        <div class="avail"><p>Open to Internship</p><span>June 2026 &middot; Europe</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="div">
+
+<div id="experience" class="wrap">
+  <p class="sec-label">02 — Experience</p>
+  <h2 class="sec-title">Work History</h2>
+
+  <div class="exp-item">
+    <div><p class="ep">Feb 2026 – Present</p><p class="el">León, Spain</p></div>
+    <div>
+      <p class="ec">Urbanbiker Ebikes</p>
+      <p class="er">Business Strategy &amp; Market Analysis</p>
+      <p class="ed">Analysing the European e-bike market and evolving customer behaviour. Evaluating expansion opportunities, benchmarking retail models (KROSS, Ecobike, Romet), and contributing to a hybrid go-to-market strategy and 2026 strategic roadmap.</p>
+      <div class="tags"><span class="tg">Market Analysis</span><span class="tg">Go-to-Market</span><span class="tg">E-Bike Sector</span><span class="tg">Benchmarking</span></div>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div><p class="ep">Nov 2025 – Jan 2026</p><p class="el">Germany</p></div>
+    <div>
+      <p class="ec">Deutsche Post / DHL</p>
+      <p class="er">Warehouse Operative</p>
+      <p class="ed">Handled parcel sorting and order processing in a high-volume logistics environment. Gained firsthand understanding of large-scale supply chain operations.</p>
+      <div class="tags"><span class="tg">Logistics</span><span class="tg">Operations</span></div>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div><p class="ep">Oct – Nov 2025</p><p class="el">Germany</p></div>
+    <div>
+      <p class="ec">Amazon DSP</p>
+      <p class="er">Logistics Associate</p>
+      <p class="ed">Supported high-volume warehouse operations including order processing, inventory handling, and shipment coordination in a fast-paced logistics environment.</p>
+      <div class="tags"><span class="tg">Amazon</span><span class="tg">Warehouse Ops</span></div>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div><p class="ep">Feb – Jun 2025</p><p class="el">Annecy, France</p></div>
+    <div>
+      <p class="ec">Decathlon</p>
+      <p class="er">Market Research &amp; Consumer Insights</p>
+      <p class="ed">Analysed consumer behaviour in European outdoor footwear markets. Evaluated purchase patterns, seasonal usage, and unmet needs. Delivered insights for product strategy and market segmentation.</p>
+      <div class="tags"><span class="tg">Consumer Research</span><span class="tg">Segmentation</span><span class="tg">Product Strategy</span></div>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div><p class="ep">2020 – Nov 2024</p><p class="el">Lahore, Pakistan</p></div>
+    <div>
+      <p class="ec">Zaidi Estate</p>
+      <p class="er">Founder &amp; Marketing Manager</p>
+      <p class="ed">Founded and managed a real estate business focused on brand growth and customer acquisition. Led digital marketing campaigns, content strategy, and sales operations over four years.</p>
+      <div class="tags"><span class="tg">Entrepreneurship</span><span class="tg">Digital Marketing</span><span class="tg">Brand Strategy</span><span class="tg">Sales</span></div>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div><p class="ep">2012 – 2016</p><p class="el">Lahore, Pakistan</p></div>
+    <div>
+      <p class="ec">Firdous Cloth Mills</p>
+      <p class="er">Regional Sales &amp; Marketing Manager</p>
+      <p class="ed">Led regional sales and brand development. Managed and trained sales teams, combining market analysis and competitive insights to support growth strategy.</p>
+      <div class="tags"><span class="tg">Sales Management</span><span class="tg">Team Leadership</span><span class="tg">Brand Dev</span></div>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div><p class="ep">2006 – 2010</p><p class="el">Lahore, Pakistan</p></div>
+    <div>
+      <p class="ec">Royal Bank of Scotland</p>
+      <p class="er">Secured Assets Operations Officer</p>
+      <p class="ed">Managed corporate loan documentation, financial operations, and compliance. Supported data migration during a major merger, strengthening operational efficiency and risk control.</p>
+      <div class="tags"><span class="tg">Financial Ops</span><span class="tg">Compliance</span><span class="tg">Data Migration</span></div>
+    </div>
+  </div>
+</div>
+
+<hr class="div">
+
+<div id="education" class="wrap">
+  <p class="sec-label">03 — Education</p>
+  <h2 class="sec-title">Academic Journey</h2>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <span class="eflag">&#127470;&#127481;</span>
+      <p class="eperiod">Sep 2024 – Jan 2025</p>
+      <p class="euni">Università di Trento</p>
+      <p class="ecity">Trento, Italy</p>
+    </div>
+    <div class="edu-card">
+      <span class="eflag">&#127467;&#127479;</span>
+      <p class="eperiod">Feb – Jul 2025</p>
+      <p class="euni">IAE Savoie Mont Blanc</p>
+      <p class="ecity">Annecy, France</p>
+    </div>
+    <div class="edu-card">
+      <span class="eflag">&#127465;&#127466;</span>
+      <p class="eperiod">Sep 2025 – Jan 2026</p>
+      <p class="euni">University of Kassel</p>
+      <p class="ecity">Kassel, Germany</p>
+    </div>
+    <div class="edu-card">
+      <span class="eflag">&#127466;&#127480;</span>
+      <p class="eperiod">Feb – May 2026</p>
+      <p class="euni">Universidad de León</p>
+      <p class="ecity">León, Spain</p>
+    </div>
+  </div>
+</div>
+
+<hr class="div">
+
+<div id="projects" class="wrap">
+  <p class="sec-label">04 — Projects</p>
+  <h2 class="sec-title">Key Projects</h2>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <p class="pn">PROJECT 01</p>
+      <p class="pt">E-Bike European Market Entry</p>
+      <p class="pc">Urbanbiker &middot; 2026</p>
+      <p class="pd">Full European market analysis including customer behaviour trends, competitor benchmarking (KROSS, Ecobike, Romet), priority market identification, and a hybrid online/retail go-to-market strategy for 2026 expansion.</p>
+    </div>
+    <div class="proj-card">
+      <p class="pn">PROJECT 02</p>
+      <p class="pt">Consumer Insights — Outdoor Footwear</p>
+      <p class="pc">Decathlon &middot; 2025</p>
+      <p class="pd">Analysed consumer purchase behaviour across European markets. Identified seasonal patterns, motivators, and barriers. Delivered segmentation and product strategy recommendations for Decathlon's positioning.</p>
+    </div>
+    <div class="proj-card">
+      <p class="pn">PROJECT 03</p>
+      <p class="pt">Social Media Competitive Audit</p>
+      <p class="pc">Urbanbiker &middot; 2026</p>
+      <p class="pd">Benchmarked Urbanbiker's social media against key competitors. Identified gaps including low posting volume, absence on TikTok, and underutilised Reels. Proposed activation strategy to accelerate audience growth.</p>
+    </div>
+    <div class="proj-card">
+      <p class="pn">PROJECT 04</p>
+      <p class="pt">Zaidi Estate Brand Strategy</p>
+      <p class="pc">Zaidi Estate &middot; 2020–2024</p>
+      <p class="pd">Built a real estate brand from zero — visual identity, digital marketing channels, content pipeline, and a sales strategy that grew client acquisition steadily over four years in a competitive urban market.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="div">
+
+<div id="seminars" class="wrap">
+  <p class="sec-label">05 — Seminars</p>
+  <h2 class="sec-title">International Seminar Weeks</h2>
+  <div class="sem-grid">
+    <div class="sem-card">
+      <div class="sflag">&#127466;&#127466;</div>
+      <p class="sp">March 2026</p>
+      <p class="st">Tallinn, Estonia</p>
+      <p class="ss">Tallinn University of Technology (TalTech)</p>
+      <p class="sd">Week-long international seminar at TalTech. Attended professional lectures and workshops, with company visits to Starship Technologies (autonomous delivery robotics) and SEB Bank headquarters (Nordic-Baltic financial group). Explored Estonia's model as a leading digital society.</p>
+      <div class="tags" style="margin-top:14px"><span class="tg">Innovation</span><span class="tg">Autonomous Tech</span><span class="tg">Digital Banking</span></div>
+    </div>
+    <div class="sem-card">
+      <div class="sflag">&#127477;&#127481;</div>
+      <p class="sp">March 2025</p>
+      <p class="st">Porto, Portugal</p>
+      <p class="ss">Porto School of Business</p>
+      <p class="sd">International seminar week at Porto School of Business, attending lectures focused on tourism management and leadership. Engaged with faculty and EMBS students from across Europe in an immersive academic and cultural setting.</p>
+      <div class="tags" style="margin-top:14px"><span class="tg">Tourism Management</span><span class="tg">Leadership</span></div>
+    </div>
+  </div>
+</div>
+
+<hr class="div">
+
+<div id="languages" class="wrap">
+  <p class="sec-label">06 — Languages &amp; Global Footprint</p>
+  <h2 class="sec-title">Languages</h2>
+  <div class="lang-grid">
+    <div>
+      <div class="lang-item">
+        <div class="lrow"><span class="ln">English</span><span class="ll">Fluent</span></div>
+        <div class="lbar"><div class="lfill" style="width:95%"></div></div>
+      </div>
+      <div class="lang-item">
+        <div class="lrow"><span class="ln">Urdu / Punjabi</span><span class="ll">Native</span></div>
+        <div class="lbar"><div class="lfill" style="width:100%"></div></div>
+      </div>
+      <div class="lang-item">
+        <div class="lrow"><span class="ln">Spanish</span><span class="ll">Intermediate</span></div>
+        <div class="lbar"><div class="lfill" style="width:55%"></div></div>
+      </div>
+      <div class="lang-item">
+        <div class="lrow"><span class="ln">German</span><span class="ll">Beginner</span></div>
+        <div class="lbar"><div class="lfill" style="width:25%"></div></div>
+      </div>
+    </div>
+    <div>
+      <p style="color:var(--muted);line-height:1.8;margin-bottom:18px">Studied across <strong style="color:var(--white)">Italy, France, Germany, and Spain</strong> within a single master's programme. Previously worked in the <strong style="color:var(--white)">United Kingdom</strong>. Built a business in <strong style="color:var(--white)">Pakistan</strong>. Attended seminars in <strong style="color:var(--white)">Estonia and Portugal</strong>.</p>
+      <div class="cpills">
+        <span class="cpill on">&#127470;&#127481; Italy</span>
+        <span class="cpill on">&#127467;&#127479; France</span>
+        <span class="cpill on">&#127465;&#127466; Germany</span>
+        <span class="cpill on">&#127466;&#127480; Spain</span>
+        <span class="cpill">&#127468;&#127463; UK</span>
+        <span class="cpill">&#127477;&#127472; Pakistan</span>
+        <span class="cpill">&#127466;&#127466; Estonia</span>
+        <span class="cpill">&#127477;&#127481; Portugal</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="contact-bg" id="contact">
+  <div class="contact-inner">
+    <div>
+      <h2 class="ch">Let's Work<br><span>Together</span></h2>
+      <p class="cs">Seeking a three-month internship starting <strong style="color:var(--white)">June 2026</strong> in marketing, business development, or market analysis. Available across Europe.</p>
+      <div style="margin-top:28px">
+        <div class="crow"><span class="ci">&#9993;</span><a href="mailto:syedamirrazazaidi@gmail.com" style="color:var(--muted)">syedamirrazazaidi@gmail.com</a></div>
+        <div class="crow" style="margin-top:10px"><span class="ci">&#128222;</span><a href="tel:+34611740014" style="color:var(--muted)">+34 611 740 014</a></div>
+        <div class="crow" style="margin-top:10px"><span class="ci">&#128101;</span><a href="https://linkedin.com/in/amirzaidi-4b314452" target="_blank" style="color:var(--muted)">linkedin.com/in/amirzaidi</a></div>
+      </div>
+    </div>
+    <div class="form">
+      <div class="frow">
+        <input type="text" placeholder="Your name">
+        <input type="email" placeholder="Your email">
+      </div>
+      <input type="text" placeholder="Company / Organisation">
+      <textarea rows="5" placeholder="Tell me about the opportunity..."></textarea>
+      <button class="btn-g" onclick="alert('Please email me directly at syedamirrazazaidi@gmail.com')" style="cursor:pointer;border:none;width:100%">Send Message</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 Amir Zaidi &mdash; syedamirrazazaidi.github.io</p>
+  <div>
+    <a href="https://linkedin.com/in/amirzaidi-4b314452" target="_blank">LinkedIn</a>
+    <a href="mailto:syedamirrazazaidi@gmail.com">Email</a>
+  </div>
+</footer>
+
+</body>
+</html>
