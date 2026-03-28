@@ -1,2 +1,2 @@
-# amirzaidi.github.io
+# syedamirrazazaidi.github.io
 My portfolio website
